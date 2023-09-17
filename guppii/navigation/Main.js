@@ -10,10 +10,10 @@ import Profile from "./screens/Profile";
 import Search from "./screens/Search";
 
 // Screen names
-const exploreName = "Explore";
+const exploreName = "Explore Guppii";
+const searchName = "Find People";
 const messagesName = "Messages";
 const profileName = "Profile";
-const searchName = "Search";
 
 const Tab = createBottomTabNavigator();
 
