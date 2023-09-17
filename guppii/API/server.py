@@ -1,7 +1,9 @@
 import json
 import bcrypt
 import secrets
-from flask import Flask, request, redirect
+from pymongo import MongoClient
+from bson import json_util
+from flask import Flask, request, redirect, Response ,jsonify
 
 
 app = Flask(__name__)
@@ -44,6 +46,17 @@ def login():
     user_token = secrets.token_urlsafe(64)
     user.user_token = user_token
     return json.dumps({"message": "success", "token": user_token})
+
+@app.get("/users")
+def users():
+    client = MongoClient("mongodb+srv://guppii:guppii@guppii.6uahsyp.mongodb.net/")
+    db = client['guppii']
+    users = db['users']
+    user_info = list(users.find())
+    resp = json.loads(json_util.dumps(user_info))
+    return resp
+
+@app.post("/user/")
 
 
 
