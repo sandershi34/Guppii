@@ -55,34 +55,65 @@ export default function Explore({ navigation }) {
 
   const renderUsers = () => {
     return Users.map((item, i) => {
-      return (
-        <Animated.View
-          {...panResponder.panHandlers}
-          key={item.id}
-          style={[
-            { transform: position.getTranslateTransform() },
-            {
-              height: screenHeight - 200,
-              width: screenWidth,
-              padding: 10,
-              position: "absolute",
-            },
-          ]}
-        >
-          <Image
-            style={{
-              flex: 1,
-              height: null,
-              width: null,
-              resizeMode: "cover",
-              borderRadius: 20,
-            }}
-            source={item.url}
-          />
-          <Text style={styles.cardText}>{item.name}</Text>
-          <Text style={styles2.cardText}>{item.about}</Text>
-        </Animated.View>
-      );
+      if (i < currentIndex) {
+        return null;
+      } else if (i == currentIndex) {
+        return (
+          <Animated.View
+            {...panResponder.panHandlers}
+            key={item.id}
+            style={[
+              { transform: position.getTranslateTransform() },
+              {
+                height: screenHeight - 200,
+                width: screenWidth,
+                padding: 10,
+                position: "absolute",
+              },
+            ]}
+          >
+            <Image
+              style={{
+                flex: 1,
+                height: null,
+                width: null,
+                resizeMode: "cover",
+                borderRadius: 20,
+              }}
+              source={item.url}
+            />
+            <Text style={styles.cardText}>{item.name}</Text>
+            <Text style={styles2.cardText}>{item.about}</Text>
+          </Animated.View>
+        );
+      } else {
+        return (
+          <Animated.View
+            key={item.id}
+            style={[
+              {
+                height: screenHeight - 200,
+                width: screenWidth,
+                padding: 10,
+                position: "absolute",
+              },
+            ]}
+          >
+            <Image
+              style={{
+                flex: 1,
+                height: null,
+                width: null,
+                resizeMode: "cover",
+                borderRadius: 20,
+              }}
+              source={item.url}
+            />
+            <Text style={styles.cardText}>{item.name}</Text>
+            <Text style={styles2.cardText}>{item.about}</Text>
+          </Animated.View>
+        );
+      }
     }).reverse();
   };
 
