@@ -47,10 +47,24 @@ export default function Explore({ navigation }) {
           position.setValue({ x: gestureState.dx, y: gestureState.dy });
         },
         onPanResponderRelease: (evt, gestureState) => {
-          // Handle release logic here
+          if (gestureState.dx > 120) {
+            Animated.spring(position, {
+              toValue: { x: screenWidth + 100, y: gestureState.dy },
+            }).start(() => {
+              setCurrentIndex(currentIndex + 1); // Update currentIndex using setCurrentIndex
+              position.setValue({ x: 0, y: 0 });
+            });
+          } else if (gestureState.dx < -120) {
+            Animated.spring(position, {
+              toValue: { x: -screenWidth - 100, y: gestureState.dy },
+            }).start(() => {
+              setCurrentIndex(currentIndex + 1); // Update currentIndex using setCurrentIndex
+              position.setValue({ x: 0, y: 0 });
+            });
+          }
         },
       }),
-    []
+    [currentIndex, position, screenWidth]
   );
 
   const renderUsers = () => {
@@ -65,13 +79,31 @@ export default function Explore({ navigation }) {
             style={[
               { transform: position.getTranslateTransform() },
               {
-                height: screenHeight - 200,
+                height: screenHeight - 250,
                 width: screenWidth,
                 padding: 10,
                 position: "absolute",
               },
             ]}
           >
+            <Animated.View
+              style={{
+                position: "absolute",
+                top: 50,
+                left: 40,
+                zIndex: 1000,
+              }}
+            ></Animated.View>
+
+            <Animated.View
+              style={{
+                position: "absolute",
+                top: 50,
+                left: 40,
+                zIndex: 1000,
+              }}
+            ></Animated.View>
+
             <Image
               style={{
                 flex: 1,
@@ -92,7 +124,7 @@ export default function Explore({ navigation }) {
             key={item.id}
             style={[
               {
-                height: screenHeight - 200,
+                height: screenHeight - 250,
                 width: screenWidth,
                 padding: 10,
                 position: "absolute",
@@ -122,6 +154,33 @@ export default function Explore({ navigation }) {
       <View style={{ height: 10 }}></View>
       <View style={{ flex: 1 }}>{renderUsers()}</View>
       <View style={{ height: 60 }}></View>
+
+      <Text
+        style={{
+          position: "absolute",
+          bottom: 10,
+          right: 10,
+          color: "green",
+          fontSize: 32,
+          fontWeight: "800",
+          padding: 10,
+        }}
+      >
+        LIKE &rarr;
+      </Text>
+      <Text
+        style={{
+          position: "absolute",
+          bottom: 10,
+          left: 10,
+          color: "red",
+          fontSize: 32,
+          fontWeight: "800",
+          padding: 10,
+        }}
+      >
+        &larr; DISLIKE
+      </Text>
     </View>
   );
 }
