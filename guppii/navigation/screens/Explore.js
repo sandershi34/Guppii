@@ -15,9 +15,24 @@ export default function Explore({ navigation }) {
   const screenWidth = Dimensions.get("window").width;
 
   const Users = [
-    { id: 1, url: require("guppii/assets/img1.jpg") },
-    { id: 2, url: require("guppii/assets/img2.jpg") },
-    { id: 3, url: require("guppii/assets/img3.jpg") },
+    {
+      id: 1,
+      url: require("guppii/assets/img1.jpg"),
+      name: "Hamed Deres",
+      about: "i like dogs",
+    },
+    {
+      id: 2,
+      url: require("guppii/assets/img2.jpg"),
+      name: "Cathy Deifne",
+      about: "i like cats",
+    },
+    {
+      id: 3,
+      url: require("guppii/assets/img3.jpg"),
+      name: "Loel Kenzo",
+      about: "i like cars",
+    },
     // Add more cards as needed
   ];
 
@@ -64,6 +79,8 @@ export default function Explore({ navigation }) {
             }}
             source={item.url}
           />
+          <Text style={styles.cardText}>{item.name}</Text>
+          <Text style={styles2.cardText}>{item.about}</Text>
         </Animated.View>
       );
     }).reverse();
@@ -77,3 +94,27 @@ export default function Explore({ navigation }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  cardText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "white",
+    position: "absolute",
+    bottom: 100,
+    left: 10,
+    padding: 10,
+  },
+});
+
+const styles2 = StyleSheet.create({
+  cardText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "white",
+    position: "absolute",
+    bottom: 50,
+    left: 10,
+    padding: 10,
+  },
+});
