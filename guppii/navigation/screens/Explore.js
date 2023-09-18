@@ -50,6 +50,7 @@ export default function Explore({ navigation }) {
           if (gestureState.dx > 120) {
             Animated.spring(position, {
               toValue: { x: screenWidth + 100, y: gestureState.dy },
+              useNativeDriver: false,
             }).start(() => {
               setCurrentIndex(currentIndex + 1); // Update currentIndex using setCurrentIndex
               position.setValue({ x: 0, y: 0 });
@@ -57,6 +58,7 @@ export default function Explore({ navigation }) {
           } else if (gestureState.dx < -120) {
             Animated.spring(position, {
               toValue: { x: -screenWidth - 100, y: gestureState.dy },
+              useNativeDriver: false,
             }).start(() => {
               setCurrentIndex(currentIndex + 1); // Update currentIndex using setCurrentIndex
               position.setValue({ x: 0, y: 0 });
@@ -69,7 +71,7 @@ export default function Explore({ navigation }) {
 
   const renderUsers = () => {
     return Users.map((item, i) => {
-      if (i < currentIndex) {
+      if (i < currentIndex || i - currentIndex > 1) {
         return null;
       } else if (i == currentIndex) {
         return (
