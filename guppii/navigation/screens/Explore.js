@@ -33,6 +33,48 @@ export default function Explore({ navigation }) {
       name: "Loel Kenzo",
       about: "i like cars",
     },
+    {
+      id: 4,
+      url: require("guppii/assets/img4jpg"),
+      name: "Chad Hui",
+      about: "i like code",
+    },
+    {
+      id: 5,
+      url: require("guppii/assets/img5.jpg"),
+      name: "Nick Cool",
+      about: "i like beans",
+    },
+    {
+      id: 6,
+      url: require("guppii/assets/img6.jpg"),
+      name: "Victor E. Bull",
+      about: "i like pokemon",
+    },
+    {
+      id: 7,
+      url: require("guppii/assets/img7.jpg"),
+      name: "Daniel Nava",
+      about: "i like C sharp",
+    },
+    {
+      id: 8,
+      url: require("guppii/assets/img8.jpg"),
+      name: "Cathy Ko",
+      about: "i like pizza",
+    },
+    {
+      id: 9,
+      url: require("guppii/assets/img9.jpg"),
+      name: "Alex Brands",
+      about: "i like cheese",
+    },
+    {
+      id: 10,
+      url: require("guppii/assets/img10.jpg"),
+      name: "Bobby Boe",
+      about: "i like diamonds",
+    },
     // Add more cards as needed
   ];
 
