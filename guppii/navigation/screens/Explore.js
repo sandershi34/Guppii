@@ -35,7 +35,7 @@ export default function Explore({ navigation }) {
     },
     {
       id: 4,
-      url: require("guppii/assets/img4jpg"),
+      url: require("guppii/assets/img4.jpg"),
       name: "Chad Hui",
       about: "i like code",
     },
