@@ -161,12 +161,12 @@ export default function Explore({ navigation }) {
           bottom: 10,
           right: 10,
           color: "green",
-          fontSize: 32,
+          fontSize: 24,
           fontWeight: "800",
           padding: 10,
         }}
       >
-        LIKE &rarr;
+        Recruit Him! &rarr;
       </Text>
       <Text
         style={{
@@ -174,12 +174,12 @@ export default function Explore({ navigation }) {
           bottom: 10,
           left: 10,
           color: "red",
-          fontSize: 32,
+          fontSize: 24,
           fontWeight: "800",
           padding: 10,
         }}
       >
-        &larr; DISLIKE
+        &larr; Not Now
       </Text>
     </View>
   );
